@@ -1,0 +1,8 @@
+{
+  "name": "node-blog",
+  "version": "0.0.1",
+  "description": "simple blog application using node",
+  "dependencies": {
+    "express": "^4.9.4"
+  }
+}
