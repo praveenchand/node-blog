@@ -3,6 +3,13 @@
   "version": "0.0.1",
   "description": "simple blog application using node",
   "dependencies": {
-    "express": "^4.9.4"
+    "express": "^4.9.4",
+    "mongoose": "*",
+    "passport": "*",
+    "passport-google": "*",
+    "passport-local":"*",
+    "cookie-parser":"*",
+    "body-parser":"*",
+    "express-session":"*"
   }
 }
