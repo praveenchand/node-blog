@@ -1,27 +1,33 @@
 
-var passport = require('passport')
+var passport = require('passport');
 
 module.exports  = function router(app){
 	
-	
-	// Redirect the user to Google for authentication.  When complete, Google
-	// will redirect the user back to the application at
-	//     /auth/google/return
+
 	app.get('/auth/google', passport.authenticate('google',{scope:['profile','email']}));
+	
+	app.get('/auth/facebook',
+			  passport.authenticate('facebook', { scope: ['read_stream', 'publish_actions'] })
+			);
+	
+	app.get('/auth/twitter', passport.authenticate('twitter'));
+
 	
 	app.get('/auth/google/return', 
 			  passport.authenticate('google', { successRedirect: '/',
 			                                    failureRedirect: '/' }));
 	
-	//app.get('*', );
+	app.get('/auth/facebook/callback', 
+			  passport.authenticate('facebook', { successRedirect: '/',
+			                                      failureRedirect: '/' }));
 	
-/*	app.get('/signin',function(req, res){
-
-		  var filename = req.url;
-			console.log(req);
-		  if(!filename) return;  // might want to change this
-		  res.render("views" + filename );
-		});*/
+	app.get('/auth/twitter/callback', 
+			  passport.authenticate('twitter', { successRedirect: '/',
+			                                     failureRedirect: '/' }));
 	
-	//app.get('*', function(req, res) { res.render('404', { title: 'Page Not Found'}); });
+	app.get('/logout', function(req, res){
+		  req.logout();
+		  res.redirect('/');
+		});
+	
 }
