@@ -1,7 +1,7 @@
 'use strict';
 
 var app = angular.module('nodeBlog', ['ngRoute']);
-
+/*
 app.config(['$routeProvider',function($routeProvider){
 	$routeProvider
     .when('/signin', {
@@ -10,5 +10,5 @@ app.config(['$routeProvider',function($routeProvider){
     .otherwise({
         redirectTo: '/signin'
       });
-}]);
+}]);*/
 
