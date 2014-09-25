@@ -2,13 +2,19 @@
 
 var app = angular.module('nodeBlog', ['ngRoute']);
 
-app.config(['$routeProvider',function($routeProvider){
+app.config(['$routeProvider', '$locationProvider',function($routeProvider,$locationProvider){
+
 	$routeProvider
-    .when('/signin', {
-      templateUrl: 'public/views/signin.html'
+    .when("/signin", {
+      templateUrl: "views/signin.html"
+    })
+    .when("/signup",{
+        templateUrl: "views/signup.html"
     })
     .otherwise({
-        redirectTo: '/signin'
+        redirectTo: "/signin"
       });
 }]);
+
+
 
