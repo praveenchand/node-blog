@@ -8,7 +8,9 @@ var express = require('express'),
     cookieParser = require('cookie-parser'),
     bodyParser = require('body-parser'),
     session = require('express-session'),
-    UserDetails = require('./user.js');
+    UserDetails = require('./users.js'),
+    path = require('path'),
+    flash    = require('connect-flash');
 
 passport.serializeUser(function(user, done) {
 	 console.log('serializeUser: ' + user._id)
@@ -27,7 +29,6 @@ passport.deserializeUser(function(id, done) {
 
 app.set('port',process.env.PORT || 300);
 app.use(express.static(__dirname + './../public'));
-/*app.set('views', __dirname + './../public/views');*/
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
