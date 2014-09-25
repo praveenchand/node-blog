@@ -7,10 +7,14 @@
     "mongoose": "*",
     "passport": "*",
     "passport-google": "*",
+    "passport-facebook": "*",
+    "passport-twitter": "*",  
     "passport-local":"*",
     "cookie-parser":"*",
     "body-parser":"*",
-    "express-session":"*"
+    "express-session":"*",
+    "jade":"*",
+    "connect-flash":"*"
   }
 }
 
