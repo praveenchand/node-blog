@@ -35,7 +35,7 @@ module.exports  = function router(app){
 	app.post('/login',
 			  passport.authenticate('local-signin', { successRedirect: '/profile',
 			                                   failureRedirect: '/signin',
-			                                   failureFlash : true });
+			                                   failureFlash : true }));
 	
 	app.post('/signup', passport.authenticate('local-signup', {
 		successRedirect : '/profile', // redirect to the secure profile section
