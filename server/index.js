@@ -35,6 +35,7 @@ app.use(bodyParser.urlencoded());
 app.use(session({ secret: 'keyboard cat' }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 
 
 
