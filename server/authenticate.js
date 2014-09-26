@@ -125,7 +125,6 @@ module.exports = function authenticate(){
                 // set the user's local credentials
                 newUser.email    = email;
                 newUser.password = password; // use the generateHash function in our user model
-
 				// save the user
                 newUser.save(function(err) {
                     if (err)
@@ -136,6 +135,7 @@ module.exports = function authenticate(){
         });
 
     }));
+
 
 	
     passport.use('local-signin', new LocalStrategy({
@@ -149,7 +149,6 @@ module.exports = function authenticate(){
             email = email.toLowerCase(); // Use lower-case e-mails to avoid case-sensitive e-mail matching
 
         // asynchronous
-        process.nextTick(function() {
             UserDetails.findOne({ 'email' :  email }, function(err, user) {
                 // if there are any errors, return the error
                 if (err)
@@ -159,14 +158,13 @@ module.exports = function authenticate(){
                 if (!user)
                     return done(null, false, req.flash('loginMessage', 'No user found.'));
 
-                if (!user.validPassword(password))
+                if (user.password !== password)
                     return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.'));
 
                 // all is well, return user
                 else
                     return done(null, user);
             });
-        });
 
     }));
 

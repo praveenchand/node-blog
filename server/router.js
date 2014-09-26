@@ -1,5 +1,6 @@
 
 var passport = require('passport');
+UserDetails = require('./users.js');
 
 module.exports  = function router(app){
 	
@@ -18,7 +19,24 @@ module.exports  = function router(app){
 			);
 	
 	app.get('/auth/twitter', passport.authenticate('twitter'));
+	
+	app.get('/auth/info',function(req,res){
+		if(req.session.passport.user !== null){
+			var id = req.session.passport.user;
+			UserDetails.findById(id, function(err, user){
+			     if(err) res.status(500).json({error:"not authorized"});
+			     else res.json(user);
+			});
+		}
+	});
 
+	
+/*	app.get('/api/me', 
+			  passport.authenticate('local-signin', { session: false }),
+			  function(req, res) {
+			    res.json(req.user);
+			  });*/
+	
 	
 	app.get('/auth/google/return', 
 			  passport.authenticate('google', { successRedirect: '/',
